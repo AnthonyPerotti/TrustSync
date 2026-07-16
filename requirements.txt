@@ -1,0 +1,28 @@
+# TrustSync
+# Perícia Forense de Mídia com Detecção de Manipulação por IA
+
+# ─── Core Framework ───────────────────────────────────────────
+PySide6>=6.6.0
+PySide6-Addons>=6.6.0
+
+# ─── Inference Engines ────────────────────────────────────────
+onnxruntime>=1.17.0          # GPU inference (CUDA / DirectML)
+# onnxruntime-gpu>=1.17.0    # Descomente se tiver NVIDIA GPU + CUDA
+openvino>=2024.0.0           # Fallback otimizado para CPU (Intel)
+
+# ─── Áudio ────────────────────────────────────────────────────
+librosa>=0.10.0              # Processamento de áudio / espectrogramas
+soundfile>=0.12.0            # Leitura/escrita de arquivos de áudio
+
+# ─── Vídeo / Imagem ──────────────────────────────────────────
+opencv-python-headless>=4.9.0  # Extração de frames de vídeo
+Pillow>=10.0.0               # Processamento de imagem
+
+# ─── Computação ───────────────────────────────────────────────
+numpy>=1.26.0                # Computação numérica
+
+# ─── Testes ───────────────────────────────────────────────────
+pytest>=8.0.0                # Framework de testes
+
+# ─── Empacotamento / Standalone ───────────────────────────────
+pyinstaller>=6.0.0           # Empacotador para .exe standalone
