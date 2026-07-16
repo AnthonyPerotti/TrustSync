@@ -1,62 +1,62 @@
 # TrustSync
 
-**Perícia Forense de Mídia com Detecção de Manipulação por IA**
+**Media Forensic Analysis with AI Manipulation Detection**
 
-Aplicação desktop para análise forense de arquivos de mídia (áudio, vídeo e documentos), com detecção de manipulação por inteligência artificial. Processamento 100% local, sem envio de dados para a nuvem.
+A desktop application for forensic analysis of media files (audio, video, and documents), featuring artificial intelligence manipulation detection. 100% local processing, with no data sent to the cloud.
 
-## Funcionalidades
+## Features
 
-- 🔍 **Análise de Áudio** — Detecção de deepfake de voz via Wav2Vec2
-- 🎬 **Análise de Vídeo** — Detecção de manipulação visual via MobileNetV3
-- 📄 **Análise de Documentos** — Verificação de integridade de metadados
-- 🚦 **Semáforo Visual** — Indicador Verde/Amarelo/Vermelho de confiança
-- 📋 **Log de Auditoria** — Registro detalhado de cada análise
-- ⚡ **GPU Acelerada** — ONNX Runtime com CUDA/DirectML, fallback OpenVINO
+- **Audio Analysis** — Voice deepfake detection via Wav2Vec2
+- **Video Analysis** — Visual manipulation detection via MobileNetV3
+- **Document Analysis** — Metadata integrity verification
+- **Visual Traffic Light** — Green/Yellow/Red trust indicator
+- **Audit Log** — Detailed record of each analysis
+- **GPU Accelerated** — ONNX Runtime with CUDA/DirectML, OpenVINO fallback
 
-## Instalação
+## Installation
 
 ```bash
-# Criar ambiente virtual
+# Create virtual environment
 python -m venv venv
 venv\Scripts\activate  # Windows
 
-# Instalar dependências
+# Install dependencies
 pip install -r requirements.txt
 ```
 
-## Uso
+## Usage
 
 ```bash
 python main.py
 ```
 
-## Estrutura
+## Project Structure
 
 ```
 src/
-├── ui/          # Interface PySide6 (View)
-├── controller/  # Lógica de controle (Controller)
-├── engine/      # Inferência e processamento (Model)
-├── models/      # Arquivos .onnx (Modelos de IA)
-├── bin/         # Binários externos standalone (ex: exiftool.exe)
-└── utils/       # Utilitários (paths, metadados, hash, log)
+├── ui/          # PySide6 Interface (View)
+├── controller/  # Control Logic (Controller)
+├── engine/      # Inference and Processing (Model)
+├── models/      # .onnx files (AI Models)
+├── bin/         # External standalone binaries (e.g., exiftool.exe)
+└── utils/       # Utilities (paths, metadata, hashes, logging)
 ```
 
-## Empacotamento Standalone (.exe via PyInstaller)
+## Standalone Packaging (.exe via PyInstaller)
 
-O TrustSync foi projetado para ser 100% autônomo (portátil). Para gerar o executável sem dependências externas no PC do utilizador final:
+TrustSync is designed to be 100% standalone (portable). To generate the executable without external dependencies on the end user's PC:
 
-1. Certifique-se de que o **ExifTool** foi colocado em `src/bin/exiftool.exe` (veja [src/bin/README.md](file:///c:/Users/spisp/OneDrive/Documentos/deepshield/TrustSync/src/bin/README.md)).
-2. Certifique-se de que os modelos `.onnx` estão em `src/models/`.
-3. Execute o comando do PyInstaller com a especificação pré-configurada em modo `one-folder`:
+1. Ensure **ExifTool** has been placed in `src/bin/exiftool.exe` (see [src/bin/README.md](file:///c:/Users/spisp/OneDrive/Documentos/deepshield/TrustSync/src/bin/README.md)).
+2. Ensure the `.onnx` models are placed in `src/models/`.
+3. Run the PyInstaller command using the pre-configured spec in `one-folder` mode:
 
 ```bash
 pyinstaller build_app.spec --clean
 ```
 
-O executável portátil final será gerado na pasta `dist/TrustSync/TrustSync.exe`. Todo o programa e suas dependências (modelos, binários e bibliotecas) estarão contidos nessa pasta.
+The final portable executable will be generated in the `dist/TrustSync/TrustSync.exe` folder. The entire program and its dependencies (models, binaries, and libraries) will be contained within that directory.
 
-## Requisitos de Sistema (Modo Desenvolvimento)
+## System Requirements (Development Mode)
 
 - Python 3.10+
-- GPU NVIDIA com CUDA (opcional, para aceleração via ONNX Runtime / DirectML)
+- NVIDIA GPU with CUDA (optional, for acceleration via ONNX Runtime / DirectML)
